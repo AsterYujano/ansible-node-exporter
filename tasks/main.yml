@@ -11,12 +11,6 @@
   tags:
     - node_exporter_install
 
-- import_tasks: selinux.yml
-  become: true
-  when: ansible_selinux.status == "enabled"
-  tags:
-    - node_exporter_configure
-
 - import_tasks: configure.yml
   become: true
   tags:
