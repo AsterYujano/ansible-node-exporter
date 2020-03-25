@@ -18,6 +18,14 @@
     mode: 0775
   when: node_exporter_textfile_dir | length > 0
 
+- name: "Allow Node exporter port with ufw : {{ node_port }}"
+  ufw:
+    rule: allow
+    direction: in
+    proto: tcp
+    port: "{{ node_port }}"
+
+
 # - name: Allow Node Exporter port in SELinux on RedHat OS family
 #   seport:
 #     ports: "{{ node_exporter_web_listen_address.split(':')[-1] }}"
